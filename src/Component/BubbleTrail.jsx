@@ -15,6 +15,10 @@ export default function BubbleTrail({ children }) {
     setTimeout(() => {
       setBubbles((prev) => prev.filter((b) => b.id !== id));
     }, 700);
+
+
+
+    
   };
 
   return (
