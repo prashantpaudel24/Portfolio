@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+@keyframes bobble {
+  0% { transform: translate(-5px, 0px) rotate(-2deg); }
+  25% { transform: translate(5px, -10px) rotate(2deg); }
+  50% { transform: translate(-5px, 5px) rotate(-1deg); }
+  75% { transform: translate(5px, -5px) rotate(1deg); }
+  100% { transform: translate(-5px, 0px) rotate(-2deg); }
+}
+
+.animate-bobble {
+  animation: bobble 6s ease-in-out infinite;
+}
+.typing {
+  overflow: hidden;
+  border-right: 2px solid #0b3b91;
+  white-space: nowrap;
+  animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}@keyframes float {
+  0%, 100% { transform: translateY(-10px); }
+  50% { transform: translateY(10px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+@keyframes rocket {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-4deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+.animate-rocket { animation: rocket 3s ease-in-out infinite; }
+
+
+#asteroid.asteroid-active {
+  transform: translate(-260px, 310px) rotate(35deg) scale(1.2);
+}
+
+
+
+@keyframes blast {
+  0% { transform: scale(.7) rotate(0deg); opacity: .4; }
+  60% { transform: scale(1.3) rotate(20deg); opacity: 1; }
+  100% { transform: scale(0) rotate(60deg); opacity: 0; }
+}
+.animate-blast {
+  animation: blast 3s ease-out forwards;
+}
+
+.typing {
+  border-right: 3px solid #245;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 4s steps(25), blink .6s step-end infinite;
+}
+
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink { 50% { border-color: transparent } }
+
+@keyframes big-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  60% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-big-pop {
+  animation: big-pop 2s ease-out  forwards;
+}
+
+
+
+
+/* Hit animation */
+@keyframes hit {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(0.9) translateX(-10px); }
+}
+.animate-hit {
+  animation: hit 0.4s ease-in-out;
+}
+
+/* Break animation */
+@keyframes break {
+  0% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50% { transform: scale(1.2) rotate(3deg); }
+  100% { transform: scale(0.6) rotate(-10deg); opacity: 0; }
+}
+.animate-break {
+  animation: break 0.7s ease-out forwards;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  60% {
+    transform: translate(-50%, -80%) scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -120%) scale(0.4);
+    opacity: 0;
+  }
+}
+
+/*hovering bubble*/
+
+.animate-bubble {
+  animation: bubbleFloat 0.7s ease-out forwards;
+}
+
+@keyframes warp {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+.hover-warp:hover {
+  animation: warp 0.4s ease-out;
+}
+
+
+.goku-glow {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  width: ;
+
+  /* core glow */
+  filter:
+    drop-shadow(0 0 15px #3af)
+    drop-shadow(0 0 35px #3af)
+    drop-shadow(0 0 55px #3af);
+
+  /* optional energy pulsing */
+  animation: gokuPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes gokuPulse {
+  0% {
+    filter:
+      drop-shadow(0 0 10px #3af)
+      drop-shadow(0 0 25px #3af)
+      drop-shadow(0 0 45px #3af);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 25px #3af)
+      drop-shadow(0 0 55px #3af)
+      drop-shadow(0 0 85px #3af);
+  }
+  100% {
+    filter:
+      drop-shadow(0 0 10px #3af)
+      drop-shadow(0 0 25px #3af)
+      drop-shadow(0 0 45px #3af);
+  }
+}
+
+
+
+/* 🔥 Subtle glow before breaking */
+.wall-glow {
+  box-shadow: 0 0 30px rgba(0, 150, 255, 0.7), 0 0 60px rgba(0, 150, 255, 0.4);
+  transition: box-shadow 0.3s;
+}
+
+/* ⚡ Shake when hit */
+@keyframes wall-shake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-8px, 3px); }
+  40% { transform: translate(6px, -6px); }
+  60% { transform: translate(-4px, 3px); }
+  80% { transform: translate(6px, -2px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-hit {
+  animation: wall-shake 0.3s ease;
+}
+
+/* 🕸️ Cracks growing */
+@keyframes cracks-grow {
+  0% { background-size: 0%; opacity: 0; }
+  100% { background-size: 80%; opacity: 1; }
+}
+
+.cracks {
+  background-image: url("/cracks.png"); /* add a crack image */
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: cracks-grow 0.5s forwards;
+}
+
+/* 💥 Final explosion */
+@keyframes wall-explode {
+  0% { transform: scale(1); opacity: 1; }
+  40% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+.animate-break {
+  animation: wall-explode 0.6s ease-out forwards;
+}
+
+/* ✨ simple debris sparkles */
+.wall::after,
+.wall::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.4) 2px, transparent 3px);
+  background-size: 20px 20px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wall-hit::after {
+  animation: debris 0.3s forwards;
+}
+
+@keyframes debris {
+  0% { opacity: 0; filter: blur(0px); }
+  100% { opacity: 1; filter: blur(3px); }
+}
+
+
+.cursor-hammer {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="32" width="32"><text y="24" font-size="24">🔨</text></svg>') 16 16, auto;
+}
